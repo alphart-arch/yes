@@ -1,8 +1,8 @@
 :root {
     font-family: Georgia, 'Times New Roman', Times, serif 'Arial Narrow Bold', sans-serif, Cochin, Georgia, Times, 'Times New Roman', serif, Helvetica, sans-serif;
-    --primary-color: #f8eaee;
-    --secondary-color: #f1d9b9;
-    --tertiary-color: #c5d85c;
+    --primary-color: #fdfbfc;
+    --secondary-color: #f8f8f7;
+    --tertiary-color: #f9faf2;
   }
   
   body {
@@ -13,7 +13,7 @@
       var(--secondary-color),
       var(--tertiary-color)
     );
-    margin: 0;
+    margin: 5;
     min-height: 100vh;
   }
   

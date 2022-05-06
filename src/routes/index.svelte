@@ -1,10 +1,14 @@
 <script>
-import { text } from "svelte/internal";
+// @ts-nocheck
 
+import { text } from "svelte/internal";
+import Calendar from '/home/oracle/svelte/yes/src/routes/Calendar.svelte';
+	
+	const today = new Date;
 </script>
 
 <style>
-    .todos {
+    /*.todos {
       width: 50%;
       max-width: 42rem;
       margin: 4rem auto 0 auto;
@@ -22,7 +26,7 @@ import { text } from "svelte/internal";
           background: rgba(255, 255, 255, 0.05);
           border-radius: 8px;
           text-align: center;
-    }
+    }*/
   
     /*.todos :global(input) {
       border: 1px solid transparent;
@@ -34,21 +38,10 @@ import { text } from "svelte/internal";
       outline: none;
     }*/
   </style>
-<svelte:head>
-  <title>PDF Parser</title>
-</svelte:head>
-<div class=todos>
-    
-    <h1>PDF Parser</h1>
-    <form class=new >
-        <table>
-            <tr><td>
-    Add new Document Type  or Region</td>
-</tr><tr><td><br><br></td></tr>
-<tr><td><input type="text"></td></tr>
-    
-</table>
-    </form>
+<div>
 
-
+    <Calendar {today} year={2020} />
 </div>
+
+
+
