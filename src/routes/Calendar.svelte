@@ -167,17 +167,15 @@
 		color: #F2480A;
 	}
 </style>-->
-<script>
+<script lang="ts">
 // @ts-nocheck
 
 	import calendarize from '/home/oracle/svelte/yes/src/routes/calendarize.ts';
 	import Arrow from './Arrow.svelte';
-	
 	export let year = 2019;
 	export let month = 0; // Jan
 	export let offset = 0; // Sun
 	export let today = null; // Date
-	
 	export let labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 	export let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 	
@@ -214,15 +212,47 @@
 	function isToday(day) {
 		return today && today_year === year && today_month === month && today_day === day;
 	}
-</script>
 
+	function handleClick() {
+		alert("button onclick");
+		
+		/*window.location.href='./about.svelte'*/
+		/*window.location.href="./Abouyt"*/
+	}
+
+
+	/*--------------------------------------------------
+	import MenuSurface from '@smui/menu-surface';
+  import Button from '@smui/button';
+ 
+	
+	function handleClick () {
+		console.log(surface.isOpen());
+		if (surface.isOpen()) { // always false
+			surface.setOpen(false)
+		} else {
+			surface.setOpen(true)
+		}
+	}
+
+
+  import type { MenuSurfaceComponentDev } from '@smui/menu-surface';
+  import Textfield from '@smui/textfield';
+
+  let surface: MenuSurfaceComponentDev;
+  let name = '';
+  let email = '';
+
+  ----------------------------------------------------------*/
+</script>
+ 
 <header>
 	<Arrow left on:click={toPrev} />
 	<h4>{months[month]} {year}</h4>
 	<Arrow on:click={toNext} />
 </header>
 
-<div class="month">
+<div class="month" >
 	{#each labels as txt, idx (txt)}
 		<span class="label">{ labels[(idx + offset) % 7] }</span>
 	{/each}
@@ -231,13 +261,16 @@
 		{#if current[idxw]}
 			{#each { length:7 } as d,idxd (idxd)}
 				{#if current[idxw][idxd] != 0}
-					<span class="date" class:today={isToday(current[idxw][idxd])}>
+					<button class="date" class:today={isToday(current[idxw][idxd])} on:click={handleClick} >
+						
 						{ current[idxw][idxd] }
-					</span>
+						
+					</button>
+					
 				{:else if (idxw < 1)}
-					<span class="date other">{ prev[prev.length - 1][idxd] }</span>
+					<button class="date other">{ prev[prev.length - 1][idxd] }</button>
 				{:else}
-					<span class="date other">{ next[0][idxd] }</span>
+					<button class="date other">{ next[0][idxd] }</button>
 				{/if}
 			{/each}
 		{/if}
@@ -296,3 +329,4 @@
 		opacity: 0.2;
 	}
 </style>
+
